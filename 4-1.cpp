@@ -1,12 +1,12 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// int main(){
-//   string a = "abcde";
-//   string * b = &a;
-//   cout << b << "\n";
-//   cout << *b << "\n";
-//   return 0;
-// }
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+  string a = "abcde";
+  string * b = &a;
+  cout << b << "\n";
+  cout << *b << "\n";
+  return 0;
+}
 
 // C++에서 포인터와 연관되어 사용되는 연산자는 다음과 같습니다.
 // 주소연산자 &와 참조 연산자 * 가 있습니다. 주소 연산자는 변수의 이름 앞에 사용하여, 해당
@@ -23,35 +23,35 @@
 // 1. begin() : 이 함수는 컨테이너 의 시작 위치를 반환하는 데 사용됩니다.
 // 2. end() : 이 함수는 컨테이너의 끝 + 1의 위치를 반환하는 데 사용됩니다
 
-// #include <bits/stdc++.h>
-// using namespace std;
-// vector<int> v;
-// int main(){
-//   for(int i = 1; i <= 5; i++)v.push_back(i);
-//   for(int i = 0; i < 5; i++){
-//     cout << i << "번째 요소 : " << *(v.begin() + i) << "\n";
-//     cout << &*(v.begin() + i) << "\n";
-//   }
-//   return 0;
-// }
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> v;
+int main(){
+  for(int i = 1; i <= 5; i++)v.push_back(i);
+  for(int i = 0; i < 5; i++){
+    cout << i << "번째 요소 : " << *(v.begin() + i) << "\n";
+    cout << &*(v.begin() + i) << "\n";
+  }
+  return 0;
+}
 
-// #include <bits/stdc++.h>
-// using namespace std;
-// int idx = 2;
-// // call by reference
-// void go(int &idx){
-//   idx = 1;
-// }
-// // call by value
-// void go2(int idx){
-//   idx = 4;
-// }
-// int main(){
-//   go(idx);
-//   cout << idx << "\n";
-//   go2(idx);
-//   cout << idx << "\n"; // 주소값으로 전달하지 않으면 변화하지 않는다.
-// }
+#include <bits/stdc++.h>
+using namespace std;
+int idx = 2;
+// call by reference
+void go(int &idx){
+  idx = 1;
+}
+// call by value
+void go2(int idx){
+  idx = 4;
+}
+int main(){
+  go(idx);
+  cout << idx << "\n";
+  go2(idx);
+  cout << idx << "\n"; // 주소값으로 전달하지 않으면 변화하지 않는다.
+}
 
 // 주소라는 것은 “메모리의 위치"이며 변수에 기록된 값은 그 메모리에 기록된 하나의 값입니다. 그렇기
 // 때문에 만약 어떠한 것을 함수를 기반으로 변화시키고 싶다면 값이 아닌 주소를 넘겨 해당 메모리
