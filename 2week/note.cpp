@@ -1,41 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
-char a[101][101];
-string s;
-
-string quard(int x, int y, int size){
-  if(size == 1) return string(1, a[x][y]);
-  char b = a[x][y];
-  string ret = "";
-  for(int i = x; i < x + size; i++){
-    for(int j = y; j < y + size; j++){
-      if(b != a[i][j]){
-        ret += "(";
-        ret += quard(x, y, size/2);
-        ret += quard(x, y+size/2, size/2);
-        ret += quard(x+size/2, y, size/2);
-        ret += quard(x+size/2, y+size/2, size/2);
-        ret += ")";
-        return ret;
-      }
-    }
+int n, c, a[1004];
+vector<pair<int, int>> v;
+map<int, int> mp, mp_first;
+bool cmp(pair<int, int> a, pair<int, int> b){
+  if(a.first == b.first){
+    return mp_first[a.second] < mp_first[b.second];
   }
-  return string(1, a[x][y]);
+  return a.first > b.first;
 }
 
 int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL); cout.tie(NULL);
-  cin >> n;
+  cin >> n >> c;
   for(int i = 0; i < n; i++){
-    cin >> s;
-    for(int j = 0; j < n; j++){
-      a[i][j] = s[j];
+    cin >> a[i];
+    mp[a[i]]++;
+    if(mp_first[a[i]] == 0) mp_first[a[i]] = i + 1;
+  }
+  for(auto it : mp){
+    v.push_back({it.second, it.first});
+  }
+  sort(v.begin(), v.end(), cmp);
+  for(auto a : v){
+    for(int j = 0; j < a.first; j++){
+      cout << a.second << " ";
     }
   }
-  cout << quard(0,0,n) << "\n";
   return 0;
 }
-
-// 
