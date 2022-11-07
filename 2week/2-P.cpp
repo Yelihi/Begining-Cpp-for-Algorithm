@@ -1,51 +1,17 @@
-// #include <bits/stdc++.h>
-// using namespace std;
-// int n, c, a[1004];
-// vector<pair<int, int>> v;
-// map<int, int> mp, mp_first;
-// bool cmp(pair<int, int> a, pair<int, int> b){
-//   if(a.first == b.first){
-//     return mp_first[a.second] < mp_first[b.second];
-//   }
-//   return a.first > b.first;
-// }
-
-// int main(){
-//   ios_base::sync_with_stdio(false);
-//   cin.tie(NULL); cout.tie(NULL);
-//   cin >> n >> c;
-//   for(int i = 0; i < n; i++){
-//     cin >> a[i];
-//     mp[a[i]]++;
-//     if(mp_first[a[i]] == 0) mp_first[a[i]] = i + 1;
-//   }
-//   for(auto it : mp){
-//     v.push_back({it.second, it.first});
-//   }
-//   sort(v.begin(), v.end(), cmp);
-//   for(auto a : v){
-//     for(int j = 0; j < a.first; j++){
-//       cout << a.second << " ";
-//     }
-//   }
-//   return 0;
-// }
-
-
 #include <bits/stdc++.h>
 using namespace std;
-int n, m, a[10][10];
+typedef pair<int, int> pi;
 
 int dx[] = {-1, 1, 0, 0};
 int dy[] = {0, 0, -1, 1};
 
-typedef pair<int, int> pi;
-vector<pi> v;
-
+int n, m, a[10][10];
 bool visited[10][10];
 
+vector<pi> v;
+
 void dfs(int x, int y){
-  if(visited[x][y] || a[x][y] == 1) return;
+  if(a[x][y] == 1 || visited[x][y]) return;
   visited[x][y] = 1;
   for(int i = 0; i < 4; i++){
     int nx = x + dx[i];
@@ -55,10 +21,9 @@ void dfs(int x, int y){
   }
 }
 
-
 int solve(){
   memset(visited, 0, sizeof(visited));
-  for(int i = 0; i < n; i++){
+  for(int i = 0; i<n; i++){
     for(int j = 0; j < m; j++){
       if(a[i][j] == 2) dfs(i, j);
     }
@@ -66,7 +31,7 @@ int solve(){
   int ans = 0;
   for(int i = 0; i < n; i++){
     for(int j = 0; j < m; j++){
-      if(a[i][j] == 0 && !visited[i][j]) ans++;
+      if(!visited[i][j] && a[i][j] == 0) ans++;
     }
   }
   return ans;
@@ -77,7 +42,7 @@ int main(){
   for(int i = 0; i < n; i++){
     for(int j = 0; j < m; j++){
       cin >> a[i][j];
-      if(a[i][j] == 0 && !visited[i][j]) v.push_back(pi(i, j));
+      if(!visited[i][j] && a[i][j] == 0) v.push_back(pi(i, j));
     }
   }
   int ans = 0;
@@ -93,3 +58,5 @@ int main(){
   cout << ans;
   return 0;
 }
+
+
