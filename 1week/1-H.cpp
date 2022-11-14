@@ -1,21 +1,21 @@
-#include <bits/stdc++.h>
-using namespace std;
-int n, k;
-int a[100004];
-vector<int> v1, v2;
-int main(){
-  cin >> n >> k ;
-  for(int i = 0; i < n; i++){
-    cin >> a[i];
-    v1.push_back(a[i]);
-  }
-  for(int i = 0; i < n - (k - 1); i++){
-    v2.push_back(accumulate(v1.begin() + i, v1.begin() + (i + k), 0));
-  }
-  int max = *max_element(v2.begin(), v2.end());
-  cout << max << "\n";
-  return 0;
-}
+// #include <bits/stdc++.h>
+// using namespace std;
+// int n, k;
+// int a[100004];
+// vector<int> v1, v2;
+// int main(){
+//   cin >> n >> k ;
+//   for(int i = 0; i < n; i++){
+//     cin >> a[i];
+//     v1.push_back(a[i]);
+//   }
+//   for(int i = 0; i < n - (k - 1); i++){
+//     v2.push_back(accumulate(v1.begin() + i, v1.begin() + (i + k), 0));
+//   }
+//   int max = *max_element(v2.begin(), v2.end());
+//   cout << max << "\n";
+//   return 0;
+// }
 
 // 시간초과 발생... 이렇게 해서는 안될것 같다.
 // 최대값을 구하는 것이나, 최소값을 구하는 방식은 법칙이 있다.
