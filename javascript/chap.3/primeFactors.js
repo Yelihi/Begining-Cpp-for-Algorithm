@@ -16,4 +16,4 @@ function primeFactors(n) {
   }
 }
 
-primeFactors(100);
+primeFactors(20);
