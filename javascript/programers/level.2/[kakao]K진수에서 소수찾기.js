@@ -24,3 +24,18 @@ function solution(k, n) {
   });
   return answer;
 }
+
+// 다른 사람 풀이
+
+function isPrime(n) {
+  if (typeof n !== "number" || n < 2) return false;
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+function solution(n, k) {
+  let nums = n.toString(k).split("0");
+  return nums.filter((v) => isPrime(+v)).length;
+}
